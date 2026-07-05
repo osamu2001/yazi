@@ -88,7 +88,7 @@ impl Input {
 		true
 	}
 
-	pub(super) fn flush_type(&mut self) {
+	pub fn flush_type(&mut self) {
 		self.ticket.next();
 		if let Some(tx) = self.tx.as_ref().filter(|_| self.realtime) {
 			tx.send(InputEvent::Type(self.value().to_owned())).ok();

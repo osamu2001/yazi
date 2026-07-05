@@ -25,6 +25,7 @@ impl InputHistory {
 
 	pub fn push(&mut self, value: String) {
 		if value.is_empty() {
+			self.reset();
 			return;
 		}
 		if self.entries.back().map(String::as_str) != Some(&value) {

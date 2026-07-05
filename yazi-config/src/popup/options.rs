@@ -73,6 +73,7 @@ impl InputCfg {
 
 	pub fn find(prev: bool) -> Self {
 		Self {
+			id: "find".into(),
 			title: YAZI.input.find_title[prev as usize].clone(),
 			position: Position::new(YAZI.input.find_origin, YAZI.input.find_offset),
 			realtime: true,
@@ -82,8 +83,8 @@ impl InputCfg {
 
 	pub fn search(name: &str) -> Self {
 		Self {
-			title: YAZI.input.search_title.replace("{n}", name),
 			id: "search".into(),
+			title: YAZI.input.search_title.replace("{n}", name),
 			position: Position::new(YAZI.input.search_origin, YAZI.input.search_offset),
 			..Default::default()
 		}

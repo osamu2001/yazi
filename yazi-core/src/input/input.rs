@@ -24,6 +24,13 @@ impl Input {
 		}
 		self.history.get_mut(&self.inner.id).unwrap()
 	}
+
+	pub fn reset_history(&mut self) {
+		if let Some(history) = self.history.get_mut(&self.inner.id) {
+			history.reset();
+		}
+	}
+
 	pub fn navigate_history(&mut self, opt: HistoryOpt) -> Result<Data> {
 		if self.inner.snap().op != InputOp::None || self.inner.obscure {
 			succ!();
@@ -36,6 +43,7 @@ impl Input {
 			}
 			None => succ!(),
 		}
+		self.inner.flush_type();
 		succ!(render!());
 	}
 }

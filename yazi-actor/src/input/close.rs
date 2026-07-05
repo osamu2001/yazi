@@ -26,6 +26,7 @@ impl Actor for Close {
 				}
 				_ = tx.send(InputEvent::Submit(value));
 			} else {
+				input.reset_history();
 				_ = tx.send(InputEvent::Cancel(value));
 			}
 		}
